@@ -29,8 +29,9 @@ pipeline {
 
         stage('Install requirements.txt'){
           steps{
-              sh("ls")
-              sh("pip3 install -r requirements.txt")
+              // sh("ls")
+              // sh("pip3 install -r requirements.txt")
+              sh("pip install pytest pandas")
           }
         }
 
