@@ -15,16 +15,29 @@ pipeline {
             echo "Hello Ethan, I'm ready to test your scripts."
         }
     }
-    stage('Install requirements.txt'){
-        steps{
-            sh("pip3 install -r requirements.txt")
+    
+    stage("Prepare Python Environments and Run Tests"){
+
+      agent {
+        docker { image 'python:3.10-slim' }
+      }
+
+      stages {
+
+        stage('Install requirements.txt'){
+          steps{
+              sh("pip3 install -r requirements.txt")
+          }
         }
-    }
-    stage('Run tests') {
-        when { expression { params.SKIP_TESTING == false } }
-        steps {
-            sh("pytest tests/test_1.py")
+
+        stage('Run tests') {
+            when { expression { params.SKIP_TESTING == false } }
+            steps {
+                sh("pytest tests/test_1.py")
+            }
         }
+
+      }
     }
   }
 }
