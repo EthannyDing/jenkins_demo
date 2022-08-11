@@ -1,0 +1,12 @@
+boto3==1.21.21
+dvc==2.10.2
+joblib==1.1.0
+matplotlib==3.5.2
+numpy==1.22.4
+pandas==1.4.2
+psycopg2-binary==2.9.3
+pytest==6.1.1
+rich==12.4.4
+schema==0.7.5
+scipy==1.8.1
+SQLAlchemy==1.4.36
