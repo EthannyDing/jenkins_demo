@@ -19,13 +19,17 @@ pipeline {
     stage("Prepare Python Environments and Run Tests"){
 
       agent {
-        docker { image 'python:3.10-slim' }
+        docker { 
+          image 'python:3.10-slim'
+          args '-u root:root -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v "${HOME}/.config:/root/.config" -v "${HOME}/.pypirc:/root/.pypirc" -w ${WORKSPACE}'
+        }
       }
 
       stages {
 
         stage('Install requirements.txt'){
           steps{
+              sh("ls")
               sh("pip3 install -r requirements.txt")
           }
         }
