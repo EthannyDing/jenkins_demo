@@ -1,8 +1,12 @@
 pipeline {
   agent any
 
-//   environment {
-//   }
+  environment {
+
+    GITHUB_URL = 'https://github.com/EthannyDing/jenkins_demo'
+    GIT_CREDENTIALS = '28eacc8f-a3fa-434a-96a3-c9c53f53a213'
+  
+  }
 
   parameters {
     booleanParam(name: 'SKIP_TESTING', defaultValue: false)
@@ -14,6 +18,13 @@ pipeline {
         steps {
             echo "Hello Ethan, I'm ready to test your scripts."
         }
+    }
+
+    stage('Clone Repo'){
+      steps {
+        git branch: 'main', [GIT_CREDENTIALS]: , url: [GITHUB_URL]
+        sh 'ls'
+      }
     }
     
     stage("Prepare Python Environments and Run Tests"){
@@ -28,16 +39,15 @@ pipeline {
 
         stage('Install requirements.txt'){
           steps{
-              // sh("ls")
-              // sh("pip3 install -r requirements.txt")
-              sh("pip install pytest pandas")
+              sh 'ls'
+              sh 'pip3 install -r requirements.txt'
           }
         }
 
         stage('Run tests') {
             when { expression { params.SKIP_TESTING == false } }
             steps {
-                sh("pytest tests/test_1.py")
+                sh "pytest tests/test_1.py"
             }
         }
 
