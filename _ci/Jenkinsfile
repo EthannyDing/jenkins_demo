@@ -22,7 +22,7 @@ pipeline {
 
     stage('Clone Repo'){
       steps {
-        git branch: 'main', [GIT_CREDENTIALS]: , url: [GITHUB_URL]
+        git branch: 'main', [GIT_CREDENTIALS], url: [GITHUB_URL]
         sh 'ls'
       }
     }
