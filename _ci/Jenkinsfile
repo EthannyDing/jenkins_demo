@@ -24,6 +24,7 @@ pipeline {
       steps {
         git branch: 'main', credentialsId: GIT_CREDENTIALS, url: GITHUB_URL
         sh 'ls'
+        echo "workspace: ${WORKSPACE}"
       }
     }
     
