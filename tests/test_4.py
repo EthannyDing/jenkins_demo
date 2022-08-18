@@ -1,0 +1,14 @@
+"""."""
+import pytest
+import pandas as pd
+
+
+@pytest.fixture(scope='module')
+def test_df():
+    f = pd.read_csv('tests/test.csv')
+    return f
+
+
+def test_get_mortality(test_df):
+
+    assert test_df.shape[1] == 2, 'number of columns is not 2'
