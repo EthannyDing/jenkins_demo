@@ -11,4 +11,5 @@ def test_df():
 
 def test_get_mortality(test_df):
 
+    assert test_df.shape[0] == 3, 'number of rows is not 3'
     assert test_df.shape[1] == 2, 'number of columns is not 2'
