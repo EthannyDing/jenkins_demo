@@ -33,7 +33,7 @@ pipeline {
       agent {
         docker { 
           image 'python:3.10-slim'
-          args '-u root:root -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v "${WORKSPACE}:/var/local" -w /var/local'
+          // args '-u root:root -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v "/var/jenkins_home/workspace/JenkinsTests:/var/local" -w /var/local'
         }
       }
 
@@ -41,7 +41,7 @@ pipeline {
 
         stage('Install requirements.txt'){
           steps{
-              sh 'cd /var/local'
+              // sh 'cd /var/local'
               sh 'pwd'
               sh 'ls'
               sh 'pip3 install -r requirements.txt'
