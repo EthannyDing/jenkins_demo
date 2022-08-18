@@ -51,7 +51,7 @@ pipeline {
         stage('Run tests') {
             when { expression { params.SKIP_TESTING == false } }
             steps {
-                sh "pytest tests/test_1.py"
+                sh "pytest tests"
             }
         }
 
