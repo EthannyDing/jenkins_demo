@@ -9,7 +9,6 @@ def test_df():
     return f
 
 
-@pytest.mark.incremental
 def test_get_mortality(test_df):
 
     assert len(test_df.columns) == 2, 'number of columns is not 2'

@@ -9,7 +9,6 @@ def test_df():
     return f
 
 
-@pytest.mark.incremental
 def test_get_mortality(test_df):
 
     assert test_df.s.sum() == 6, 'column s sum is not 6'
